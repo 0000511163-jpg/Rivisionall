@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Bruna Oliveira">
+    <meta name="description" content="Revisão do conteúdo de HTML, CSS e JavaScript">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Revisão de HTML, CSS e JavaScript</h1>
+        <h2>Conteúdo de estudo</h2>
+        <h3>Revisão de conteúdo</h3>
+        <h4>Revisão de conteúdo</h4>
+        <h5>Revisão de conteúdo</h5>
+        <h6>Revisão de conteúdo</h6>
+        <nav>
+            <ul>
+                <li><a href="#article">Artigo</a></li>
+                <li><a href="#audVid">audio e video</a></li>
+                <li><a href="#listas">listas</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <p>Este é um <mark>parágrafo</mark> de texto para <i>revisão</i> de <strong>conteúdo</strong>.</p>
+        <br><hr><br>
+        <div id="audVid">
+            <video controls width="320"><source src="video.mp4" type="video/mp4"></video>
+            <audio controls autoplay loop><source src="audio.mp3" type="audio/mpeg"></audio>
+        </div>
+        <br>
+        <article id="article">
+            <h2>Artigo deExemplo</h2>
+            <p>Este é um artigo de exemplo para revisão de código. Aqui coloque o conteúdo do artigo.</p>
+        </article>
+        <div id="listas">
+            <h2>Lista Desordenada - Compras</h2>
+            <ul>
+                <li>Feijão</li>
+                <li>Arroz</li>
+                <li>Macarrão</li>
+            </ul>
+            <h2>Lista Ordenada - Vencedores</h2>
+            <ol>
+                <li>Camila</li>
+                <li>Melissa</li>
+                <li>Daniele</li>
+            </ol>
+        </div>
+        <form>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" placeholder="Digite seu nome"><br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Digite seu email"><br><br>
+            <button type="button" id="BotaoSalvar">Salvar dados</button>
+        </form>
+    </main>
+    <footer>
+        <h6>Desenvolvido por Bruna Oliveira. &copy; 2026</h6>
+    </footer>
+    <script>
+        document.getElementById('BotaoSalvar').addEventListener('click', () => {
+            const nome = document.getElementById('nome').value.trim();
+            const email = document.getElementById('email').value.trim();
+            if (!nome || !email) return alert('Por favor, preencha todos os campos!');
+            const blob = new Blob([`Nome: ${nome}\nEmail: ${email}`], { type: 'text/plain;charset=utf-8' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'dados.txt';
+            link.click();
+            URL.revokeObjectURL(link.href);
+        });
+    </script>
+</body>
+</html>
